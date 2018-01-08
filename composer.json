@@ -1,0 +1,31 @@
+{
+    "name": "scary-donetskiy/phalcon-tcplogger",
+    "description": "TCP Adapter for Phalcon Logger",
+    "minimum-stability": "dev",
+    "license": "BSD 2-Clause",
+    "authors": [
+        {
+            "name": "Vladyslav Pozdnyakov",
+            "email": "scary_donetskiy@live.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "ext-phalcon": ">=3.2",
+        "ext-sockets": "*"
+    },
+    "require-dev": {
+        "phalcon/ide-stubs": "v3.2.1",
+        "phpunit/phpunit": "^7.0@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "ScaryDonetskiy\\TCPLogger\\": "src/",
+            "ScaryDonetskiy\\TCPLogger\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --bootstrap vendor/autoload.php tests/",
+        "testsCoverage": "vendor/bin/phpunit --bootstrap vendor/autoload.php --coverage-html tests/coverage/ --whitelist src/ tests/"
+    }
+}
