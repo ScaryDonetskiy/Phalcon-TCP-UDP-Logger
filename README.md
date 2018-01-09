@@ -21,7 +21,7 @@ You can find examples of usage in [official documentation](https://docs.phalconp
 
 Use composer for installation
 ```bash
-composer require scary-donetskiy/phalcon-tcplogger
+composer require vados/phalcon-tcplogger
 ```
 
 ### Contribution guidelines ###
