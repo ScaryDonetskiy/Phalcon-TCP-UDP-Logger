@@ -1,6 +1,9 @@
 # TCP Logger Adapter for Phalcon PHP #
 
-[![license](https://img.shields.io/badge/license-BSD2-brightgreen.svg)]()
+[![Packagist](https://img.shields.io/packagist/l/vados/phalcon-tcplogger.svg)]()
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/vados/phalcon-tcplogger.svg)]()
+[![Packagist](https://img.shields.io/packagist/dt/vados/phalcon-tcplogger.svg)]()
+[![Bitbucket issues](https://img.shields.io/bitbucket/issues/Scary_Donetskiy/phalcon-tcplogger.svg)]()
 
 Works with PHP 7.1+
 
