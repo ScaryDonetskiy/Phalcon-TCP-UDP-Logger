@@ -1,5 +1,5 @@
 {
-    "name": "scary-donetskiy/phalcon-tcplogger",
+    "name": "vados/phalcon-tcplogger",
     "description": "TCP Adapter for Phalcon Logger",
     "minimum-stability": "dev",
     "license": "BSD 2-Clause",
@@ -20,8 +20,8 @@
     },
     "autoload": {
         "psr-4": {
-            "ScaryDonetskiy\\TCPLogger\\": "src/",
-            "ScaryDonetskiy\\TCPLogger\\Tests\\": "tests/"
+            "Vados\\TCPLogger\\": "src/",
+            "Vados\\TCPLogger\\Tests\\": "tests/"
         }
     },
     "scripts": {

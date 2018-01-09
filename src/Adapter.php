@@ -1,6 +1,6 @@
 <?php
 
-namespace ScaryDonetskiy\TCPLogger;
+namespace Vados\TCPLogger;
 
 use Phalcon\Logger as PhalconLogger;
 use Phalcon\Logger\AdapterInterface;
@@ -8,8 +8,8 @@ use Phalcon\Logger\Formatter\Line;
 use Phalcon\Logger\FormatterInterface;
 
 /**
- * Class Logger
- * @package Dockent\components
+ * Class Adapter
+ * @package Vados\TCPLogger
  */
 class Adapter implements AdapterInterface
 {
