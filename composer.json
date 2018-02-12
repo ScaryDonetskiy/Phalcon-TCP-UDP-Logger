@@ -2,7 +2,7 @@
     "name": "vados/phalcon-tcplogger",
     "description": "TCP Adapter for Phalcon Logger",
     "minimum-stability": "dev",
-    "license": "BSD 2-Clause",
+    "license": "BSD-2-Clause",
     "authors": [
         {
             "name": "Vladyslav Pozdnyakov",
