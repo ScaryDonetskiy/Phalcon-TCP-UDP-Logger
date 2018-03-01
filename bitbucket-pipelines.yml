@@ -10,5 +10,5 @@ pipelines:
             - apt-get update && apt-get install -y unzip git
             - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
             - docker-php-ext-install sockets
-            - composer install --ignore-platform-reqs
+            - composer install
             - composer test
