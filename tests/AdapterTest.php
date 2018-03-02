@@ -15,8 +15,8 @@ use PHPUnit\Framework\TestCase;
  */
 class AdapterTest extends TestCase
 {
-    const HOST = '127.0.0.1';
-    const PORT = '80';
+    const HOST = 'localhost';
+    const PORT = '10000';
 
     /**
      * @var Adapter
