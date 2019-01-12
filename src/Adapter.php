@@ -6,6 +6,7 @@ use Phalcon\Logger as PhalconLogger;
 use Phalcon\Logger\AdapterInterface;
 use Phalcon\Logger\Formatter\Line;
 use Phalcon\Logger\FormatterInterface;
+use Vados\TCPLogger\socket\Socket;
 
 /**
  * Class Adapter
@@ -34,38 +35,19 @@ class Adapter implements AdapterInterface
     private $transactionStack = [];
 
     /**
-     * @var string
+     * @var Socket
      */
-    private $host;
-
-    /**
-     * @var int
-     */
-    private $port;
-
-    /**
-     * @var resource
-     */
-    private $socket = null;
+    private $socket;
 
     /**
      * Logger constructor.
      * @param string $host
      * @param int $port
+     * @param int $protocol
      */
-    public function __construct(string $host, int $port)
+    public function __construct(string $host, int $port, int $protocol = Protocol::TCP)
     {
-        $this->host = $host;
-        $this->port = $port;
-    }
-
-    /**
-     * @return bool
-     */
-    private function socketInitialize(): bool
-    {
-        $this->socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-        return @socket_connect($this->socket, $this->host, $this->port);
+        $this->socket = SocketFactory::getByProtocol($protocol, $host, $port);
     }
 
     /**
@@ -132,14 +114,9 @@ class Adapter implements AdapterInterface
                 'context' => $context
             ];
         } else {
-            if ($this->socket === null) {
-                if (!$this->socketInitialize()) {
-                    return $this;
-                }
-            }
             $package = $this->getFormatter()->format($message, $type, time(), $context);
             $package = str_replace(PHP_EOL, '<=>', $package) . PHP_EOL;
-            socket_send($this->socket, $package, strlen($package), 0);
+            $this->socket->send($package);
         }
         return $this;
     }
@@ -189,10 +166,7 @@ class Adapter implements AdapterInterface
      */
     public function close(): bool
     {
-        if ($this->socket !== null) {
-            @socket_close($this->socket);
-        }
-        return true;
+        return $this->socket->close();
     }
 
     /**

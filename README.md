@@ -1,4 +1,4 @@
-# TCP Logger Adapter for Phalcon PHP #
+# TCP/UDP Logger Adapter for Phalcon PHP #
 
 [![Packagist](https://img.shields.io/packagist/l/vados/phalcon-tcplogger.svg)]()
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/vados/phalcon-tcplogger.svg)]()
@@ -12,7 +12,7 @@ Works with PHP 7.1+
 Adapter implement \Phalcon\Logger\AdapterInterface. You can use it like an any other adapter from Phalcon Framework
 
 ```php
-$logger = new \Vados\TCPLogger\Adapter('127.0.0.1', 8080);
+$logger = new \Vados\TCPLogger\Adapter('127.0.0.1', 8080, \Vados\TCPLogger\Protocol::TCP);
 $logger->error('Error message');
 ```
 
