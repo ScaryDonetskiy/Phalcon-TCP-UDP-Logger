@@ -8,6 +8,6 @@ namespace Vados\TCPLogger;
  */
 abstract class Protocol
 {
-    const TCP = SOL_TCP;
-    const UDP = SOL_UDP;
+    const TCP = 0;
+    const UDP = 1;
 }

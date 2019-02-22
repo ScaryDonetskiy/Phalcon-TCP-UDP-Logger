@@ -65,7 +65,7 @@ abstract class Socket
      */
     public function close(): bool
     {
-        if ($this->socket !== null) {
+        if ($this->socket !== null && is_resource($this->socket)) {
             socket_close($this->socket);
         }
         return true;

@@ -8,6 +8,7 @@ use Phalcon\Logger\AdapterInterface;
 use Phalcon\Logger\Formatter\Json;
 use Phalcon\Logger\FormatterInterface;
 use PHPUnit\Framework\TestCase;
+use Vados\TCPLogger\Protocol;
 
 /**
  * Class AdapterTest
@@ -15,8 +16,8 @@ use PHPUnit\Framework\TestCase;
  */
 class AdapterTest extends TestCase
 {
-    const HOST = 'localhost';
-    const PORT = '10000';
+    const HOST = '52.20.16.20';
+    const PORT = '40000';
 
     /**
      * @var Adapter
@@ -25,7 +26,7 @@ class AdapterTest extends TestCase
 
     public function setUp()
     {
-        $this->instance = new Adapter(self::HOST, self::PORT);
+        $this->instance = new Adapter(self::HOST, self::PORT, Protocol::UDP);
     }
 
     /**
@@ -133,32 +134,6 @@ class AdapterTest extends TestCase
     /**
      * @throws \Exception
      */
-    public function testSocketInitialize()
-    {
-        $socketInitialize = new \ReflectionMethod($this->instance, 'socketInitialize');
-        $socketInitialize->setAccessible(true);
-        $this->assertTrue($socketInitialize->invoke($this->instance));
-        $host = new \ReflectionProperty($this->instance, 'host');
-        $host->setAccessible(true);
-        $host->setValue($this->instance, 'not.existing.host');
-        $this->assertFalse($socketInitialize->invoke($this->instance));
-    }
-
-    /**
-     * @throws \Exception
-     */
-    public function testLogWithIncorrectSocket()
-    {
-        $host = new \ReflectionProperty($this->instance, 'host');
-        $host->setAccessible(true);
-        $host->setValue($this->instance, 'not.existing.host');
-        $this->assertInstanceOf(AdapterInterface::class,
-            $this->instance->log(PhalconLogger::CRITICAL, 'Message', ['Context' => 'Array']));
-    }
-
-    /**
-     * @throws \Exception
-     */
     public function testLogWithErrorLevel()
     {
         $this->assertInstanceOf(AdapterInterface::class, $this->instance->debug('Message'));
@@ -175,9 +150,12 @@ class AdapterTest extends TestCase
      */
     public function testDestructor()
     {
-        $socket = new \ReflectionProperty($this->instance, 'socket');
-        $socket->setAccessible(true);
+        $socketClass = new \ReflectionProperty($this->instance, 'socket');
+        $socketClass->setAccessible(true);
+        $socketClass = $socketClass->getValue($this->instance);
+        $socketResource = new \ReflectionProperty($socketClass, 'socket');
+        $socketResource->setAccessible(true);
         $this->instance->__destruct();
-        $this->assertNull($socket->getValue($this->instance));
+        $this->assertNull($socketResource->getValue($socketClass));
     }
 }
