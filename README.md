@@ -4,6 +4,7 @@
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/vados/phalcon-tcplogger.svg)]()
 [![Packagist](https://img.shields.io/packagist/dt/vados/phalcon-tcplogger.svg)]()
 [![Bitbucket issues](https://img.shields.io/bitbucket/issues/Scary_Donetskiy/phalcon-tcplogger.svg)]()
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ScaryDonetskiy/Phalcon-TCP-UDP-Logger/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ScaryDonetskiy/Phalcon-TCP-UDP-Logger/?branch=master)
 
 Works with PHP 7.1+
 
