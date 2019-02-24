@@ -1,0 +1,15 @@
+language: php
+sudo: true
+php:
+  - '7.1'
+  - '7.2'
+  - '7.3'
+env:
+  - PHALCON_VERSION="v3.4.2"
+install:
+  - git clone --depth=1 -q --branch=${PHALCON_VERSION} https://github.com/phalcon/cphalcon.git
+  - '(cd cphalcon/build; bash install &>/dev/null && phpenv config-add ../tests/_ci/phalcon.ini &> /dev/null && cd ../..;)'
+  - php --ri phalcon
+  - travis_retry composer install --prefer-dist --no-interaction
+script:
+  - composer test
